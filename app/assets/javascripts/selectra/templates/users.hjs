@@ -6,11 +6,11 @@
 </div>
 
 <div class="col-lg-12 col-md-12">
-  <div id="filters_users"></div>
+  <div id="users_filters"></div>
 </div>
 
 <div class="col-lg-12 col-md-12">
-  <div id="results_users"></div>
+  <div id="users_results"></div>
 </div>
 
 <div class="col-lg-12 col-md-12">

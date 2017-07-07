@@ -58,3 +58,6 @@
 //= require_tree ../commons/modules/navbar
 //= require_tree ./src/modules/layout
 //= require_tree ./src/modules/menu
+//= require_tree ./src/modules/users
+//= require_tree ./src/modules/users_filters
+// require_tree ./src/modules/users_results

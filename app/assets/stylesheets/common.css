@@ -110,3 +110,7 @@ body#selectra {
   width: 25px;
   display: block;
 }
+
+.panel-title > a.users-filters {
+  font-size: 14px;
+}

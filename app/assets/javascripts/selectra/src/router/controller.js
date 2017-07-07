@@ -71,6 +71,9 @@ Selectra.router.controller = function() {
     };
 
     var stopSidebarModules = function() {
+      core.stop('Users');
+      core.stop('UsersFilters');
+      core.stop('Usersresults');
     };
 
     var changeModuloSidebar = function(data) {
@@ -89,6 +92,40 @@ Selectra.router.controller = function() {
 
     var users = function() {
       startBaseModules();
+
+      core.start('Users', {
+        options: {
+          el: '#central'
+        }
+      });
+    };
+
+    var usersFilters = function(data) {
+      core.stop('UsersFilters');
+      // core.stop('UsersResults');
+
+      core.start('UsersFilters', {
+        options: {
+          el: '#users_filters'
+        }
+      });
+
+      // core.start('UsersResults', {
+      //  options: {
+      //    el: '#users_results', users: []
+      //  }
+      // });
+    };
+
+    var usersResults = function(data) {
+      core.stop('UsersResults');
+
+      core.start('UsersResults', {
+        options: {
+          el: '#users_results',
+          users: data.users
+        }
+      });
     };
 
     var locations = function() {
@@ -118,10 +155,10 @@ Selectra.router.controller = function() {
     //router.routed.add(console.log, console);
 
     core.on('menu.change_sidebar', changeModuloSidebar);
+    // Users search filters
+    core.on('users.users_filters', usersFilters);
 
     // Eventos relacionados con arracar y parar el spinner
-    // core.on('empleados.sincronizando', startModalSpinner);
-    // core.on('empleados.sincronizando_ended', stopModalSpinner);
 
     hasher.initialized.add(parseHash); //parse initial hash
     hasher.changed.add(parseHash); //parse hash changes, añade un listener de hash change
