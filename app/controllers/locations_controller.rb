@@ -30,10 +30,4 @@ class LocationsController < ApplicationController
   def permit_params_update(params)
     params.permit([:id, location: %i[name open_time close_time]])
   end
-
-  protected
-
-  def current_power
-    Powers::Network.new(current_user_session)
-  end
 end
