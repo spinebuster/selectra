@@ -1,0 +1,9 @@
+<!-- -->
+<div role="complementary">
+  <nav>
+    <ul class="nav nav-stacked menu-sidenav">
+      {{paintMenu "users" submenus}}
+      {{paintMenu "locations" submenus}}
+    </ul>
+  </nav>
+</div>

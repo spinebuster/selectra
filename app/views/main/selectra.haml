@@ -1,0 +1,12 @@
+- content_for :javascripts do
+  = javascript_include_tag 'selectra/sprockets'
+
+  :javascript
+    $(document).ready(
+      function() {
+        Selectra.application.initialize({el: '#main'});
+      }
+    );
+
+- content_for :stylesheets do
+  = stylesheet_link_tag 'application'

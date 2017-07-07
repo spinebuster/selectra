@@ -1,0 +1,8 @@
+<!-- Modal para asignar un nuevo titular al alumno -->
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <img src="/images/loading.gif"> {{text}}
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

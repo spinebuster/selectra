@@ -1,0 +1,16 @@
+!!!5
+%html
+  %head
+    %title Prueba Selectra
+    %meta{:'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge'}
+
+  %body
+    = yield
+    #main
+
+    - # Cargar el javascript al final del todo
+    = yield :javascripts
+
+    = yield :stylesheets
+
+    #row

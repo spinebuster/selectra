@@ -1,0 +1,8 @@
+<!-- -->
+<div id="navbar"></div>
+<div class="container">
+  <div class="col-lg-3 col-md-3" id="menu"></div>
+  <div class="col-lg-9 col-md-9" id="central"></div>
+</div>
+
+<div class="modal fade" id="modalSpinner" tabindex="-1" role="dialog" aria-labelledby="modalSpinnerLabel" aria-hidden="true" data-backdrop="static"></div>

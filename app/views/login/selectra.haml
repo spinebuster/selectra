@@ -1,0 +1,17 @@
+.wrapper.kubbe
+  - unless flash.alert.blank?
+    .container#selectra
+      %div{class: "alert alert-#{flash[:status]} alert-dismissable"}
+        %button{type: 'button', class: 'close', "data-dismiss" => 'alert', "aria-hidden" => 'true'} &times;
+        %strong= flash.alert
+  .container#selectra
+    .loginForm#selectra
+      .row
+        = simple_form_for '', url: url_for(action: 'confirm_login', controller: 'main'), method: :post, defaults: { input_html: { class: 'form-horizontal' } } do |f|
+          .col-lg-7.col-md-7
+            .form-group.col-lg-12.col-md-12
+              = f.input :email, required: false, label: 'Email', input_html: { class: 'form-control' }
+            .form-group.col-lg-12.col-md-12
+              = f.input :password, required: false, label: 'Contraseña', input_html: { class: 'form-control' }
+          .col-lg-5.col-md-5.col-sm-5.col-xs-5
+            = f.button :submit, '', class: 'btn'

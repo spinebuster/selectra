@@ -1,0 +1,11 @@
+!!!5
+%html
+  %head
+    = javascript_include_tag 'commons/libs/jquery'
+    = javascript_include_tag 'commons/libs/bootstrap'
+    = stylesheet_link_tag 'bootstrap', media: 'all'
+    = stylesheet_link_tag 'common', media: 'all'
+    = csrf_meta_tags
+
+  %body.login#selectra
+    = yield

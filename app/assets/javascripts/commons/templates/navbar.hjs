@@ -1,0 +1,10 @@
+<nav class='navbar navbar-inverse'>
+  <div class='navbar-header'>
+    <a class='navbar-brand' href='#'>SELECTRA</a>
+    <div class='pull-right'>
+      <a id='sign_out' href='salir'>
+        <span style='visibility: hidden;'></span>
+      </a>
+    </div>
+  </div>
+</nav>
