@@ -54,10 +54,11 @@
 //= require ./src/modules/init
 
 // Cargar los modulos (El fichero de Modulo, el ultimo)
-//= require_tree ../commons/modules/modal_spinner
 //= require_tree ../commons/modules/navbar
+//= require_tree ../commons/modules/spinner_modal
 //= require_tree ./src/modules/layout
 //= require_tree ./src/modules/menu
 //= require_tree ./src/modules/users
 //= require_tree ./src/modules/users_filters
-// require_tree ./src/modules/users_results
+//= require_tree ./src/modules/users_results
+//= require_tree ./src/modules/user_modal

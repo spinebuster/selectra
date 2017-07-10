@@ -110,11 +110,11 @@ Selectra.router.controller = function() {
         }
       });
 
-      // core.start('UsersResults', {
-      //  options: {
-      //    el: '#users_results', users: []
-      //  }
-      // });
+      core.start('UsersResults', {
+        options: {
+          el: '#users_results', users: []
+        }
+      });
     };
 
     var usersResults = function(data) {
@@ -128,20 +128,33 @@ Selectra.router.controller = function() {
       });
     };
 
+    var startUserModal = function(data) {
+      core.start('UserModal', {
+        options: {
+          el: '#userModal',
+          user: data.user || {}
+        }
+      });
+    };
+
+    var stopUserModal = function() {
+      core.stop('UserModal');
+    };
+
     var locations = function() {
       startBaseModules();
     };
 
     var startModalSpinner = function(data) {
-      core.start('ModalSpinner', {
+      core.start('spinnerModal', {
         options: {
-          el: '#modalSpinner', params: data || {}
+          el: '#spinnerModal', params: data || {}
         }
       });
     };
 
     var stopModalSpinner = function() {
-      core.stop('ModalSpinner');
+      core.stop('spinnerModal');
     };
 
     /****************************************************************************/
@@ -157,6 +170,9 @@ Selectra.router.controller = function() {
     core.on('menu.change_sidebar', changeModuloSidebar);
     // Users search filters
     core.on('users.users_filters', usersFilters);
+    core.on('users_filters.users_results', usersResults);
+    core.on('users.new_user', startUserModal);
+    core.on('user_modal.close', stopUserModal);
 
     // Eventos relacionados con arracar y parar el spinner
 

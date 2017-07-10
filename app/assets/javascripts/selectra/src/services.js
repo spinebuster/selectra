@@ -13,6 +13,11 @@ Selectra.services = function() {
 
   // Define todas las peticiones request que se harán con Amplify
   var initialize = function() {
+    amplify.request.define('service_users', 'ajax', {
+      url: '/users.json',
+      type: 'GET',
+      decoder: decoder
+    });
   };
 
   return {

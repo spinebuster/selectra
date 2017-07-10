@@ -21,14 +21,14 @@ Selectra.modules.users.View = function(sb, model, controller) {
   var onClickNewUser = function(e) {
     e.preventDefault();
 
-    $('.modal-user-cargando').show();
+    $('.user-modal-loading').show();
     $('#collapseUsersFilters').collapse('hide');
     var icono = $('.accordion-toggle.users-filters').find('span');
     if (icono.hasClass('glyphicon-chevron-up')) {
       icono.removeClass('glyphicon-chevron-up');
       icono.addClass('glyphicon-chevron-down');
     }
-    controller.nuevoCodigo();
+    controller.newUser();
   };
 
   return sb.backbone.View.extend({

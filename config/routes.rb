@@ -4,7 +4,7 @@
 Rails.application.routes.draw do
   get  ''                    => 'main#index', as: :main_index
   post '/main/confirm_login' => 'main#confirm_login'
-  get  '/salir'              => 'main#salir'
+  get  '/logout'             => 'main#logout'
 
   get  '/selectra.html' => 'main#selectra'
 

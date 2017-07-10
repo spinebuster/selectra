@@ -5,4 +5,5 @@
   <div class="col-lg-9 col-md-9" id="central"></div>
 </div>
 
-<div class="modal fade" id="modalSpinner" tabindex="-1" role="dialog" aria-labelledby="modalSpinnerLabel" aria-hidden="true" data-backdrop="static"></div>
+<div class="modal fade" id="spinnerModal" tabindex="-1" role="dialog" aria-labelledby="spinnerModalLabel" aria-hidden="true" data-backdrop="static"></div>
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true" data-backdrop="static"></div>

@@ -16,7 +16,7 @@
 <div class="col-lg-12 col-md-12">
   <button type="button" class="btn btn-primary" id="btnNewUser">Nuevo usuario</button>
   <div class="btn" style="cursor:default;">
-    <div style="display:none;" class="col-lg-3 col-md-3">
+    <div style="display:none;" class="user-modal-loading col-lg-3 col-md-3">
       <img src="/images/loading.gif"> Cargando...
     </div>
   </div>

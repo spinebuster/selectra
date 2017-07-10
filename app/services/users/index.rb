@@ -12,7 +12,9 @@ module Services
       end
 
       def execute!
-        indexable(User)
+        scope = User
+        scope = scope.with_name(@params[:name]) unless @params[:name].blank?
+        indexable(scope)
       end
     end
   end

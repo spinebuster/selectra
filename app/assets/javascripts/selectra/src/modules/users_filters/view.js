@@ -45,7 +45,7 @@ Selectra.modules.users_filters.View = function(sb, model, controller) {
     }
 
     var params = {
-      nombre: $('#inputNombre').val()
+      name: $('#inputName').val()
     };
 
     controller.getUsers(params);

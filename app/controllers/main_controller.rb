@@ -31,7 +31,7 @@ class MainController < ApplicationController
 
   def selectra; end
 
-  def sign_out
+  def logout
     reset_session
     flash.alert = 'El usuario ha salido del sistema correctamente.'
     flash[:status] = 'success'

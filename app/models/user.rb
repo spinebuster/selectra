@@ -29,4 +29,11 @@ class User < ActiveRecord::Base
       template.add field
     end
   end
+
+  # Scopes
+  class << self
+    def with_name(name)
+      where(name: name)
+    end
+  end
 end

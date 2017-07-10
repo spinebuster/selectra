@@ -1,8 +1,8 @@
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 
-NS('Commons.modules.modal_spinner');
+NS('Commons.modules.spinner_modal');
 
-Commons.modules.modal_spinner.Controller = function(sb) {
+Commons.modules.spinner_modal.Controller = function(sb) {
   return function(model) {
     var initialize = function() {
       this.model.start(this.sb.options.params);

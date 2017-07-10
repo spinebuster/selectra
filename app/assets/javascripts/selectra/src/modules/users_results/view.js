@@ -1,20 +1,18 @@
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 
-NS('Commons.modules.modal_spinner');
+NS('Selectra.modules.users_results');
 
-Commons.modules.modal_spinner.View = function(sb, model, controller) {
+Selectra.modules.users_results.View = function(sb, model, controller) {
   var initialize = function() {
-    model.on('data_loaded', render, this);
+    model.on('users_results_loaded', render, this);
   };
 
   var render = function() {
-    $(this.el).html(JST[this.template](model.toJSON()));
-    $(this.el).modal('show');
+    $(this.el).html(JST[this.template()](model.toJSON()));
     return this;
   };
 
   var close = function() {
-    $(this.el).modal('hide');
     $(this.el).html('');
     // removing all backbone events
     this.stopListening();
@@ -24,7 +22,9 @@ Commons.modules.modal_spinner.View = function(sb, model, controller) {
 
   return sb.backbone.View.extend({
     _this: this,
-    template: 'commons/templates/modal_spinner',
+    template: function() {
+      return 'selectra/templates/users_results';
+    },
     el: sb.options.el,
     events: {
     },

@@ -1,26 +1,24 @@
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 
-NS('Commons.modules.modal_spinner');
+NS('Selectra.modules.user_modal');
 
-Commons.modules.modal_spinner.Model = function(sb) {
+Selectra.modules.user_modal.Model = function(sb) {
   this.sb = sb;
 
   var start = function(params) {
-    if (params.text !== null) {
-      this.set('text', params.text);
-    }
-
     this.trigger('data_loaded');
   };
 
-  var destroy = function() {};
+  var destroy = function() {
+  };
 
   return this.sb.backbone.Model.extend({
     // Guardar el SandBox
     sb: sb,
 
+    // Valores de los filtros de búsqueda
     defaults: {
-      text: 'Cargando...'
+      user: null
     },
 
     // Inicializa el modelo

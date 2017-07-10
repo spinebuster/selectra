@@ -20,7 +20,7 @@ class JstHandlebars < Tilt::Template
 
   attr_reader :namespace
 
-  def evaluate(scope, _locals, _block)
+  def evaluate(scope, _locals, &block)
     <<-JST
       (function() { #{namespace} || (#{namespace} = {}); #{namespace}['#{scope.logical_path}'] = Handlebars.compile(#{data.to_json});
       }).call(this);
