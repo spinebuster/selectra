@@ -20,7 +20,8 @@ gem 'sass'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# Turbolinks makes following links in your web application faster.
+# Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -47,7 +48,8 @@ gem 'consul', '0.12.1'
 gem 'paper_trail'
 # Map incoming controller parameters to named scopes in your resources
 gem 'ransack', github: 'activerecord-hackery/ransack'
-# Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup
+# Forms made easy for Rails! It's tied to a simple DSL, with no opinion on
+# markup
 gem 'simple_form'
 gem 'sprockets', '3.6.3'
 gem 'sprockets-rails', '~> 2.3'

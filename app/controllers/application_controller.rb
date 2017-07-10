@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate
-    return true
-    # return true if User.find_by_email(session[:user].email)
-    flash.alert = 'No existe una sesión asociada a este usuario.'
-    flash[:status] = 'danger'
-    redirect_to main_index_path
+    true
+    # return true if User.find_by_email(session[:email])
+    # flash.alert = 'No existe una sesion asociada a este usuario.'
+    # flash[:status] = 'danger'
+    # redirect_to main_index_path
   end
 end

@@ -1,9 +1,13 @@
+# encoding: utf-8
+# frozen_string_literal: true
+
 require 'tilt'
 require 'json'
 
+# This is the JstHandlebars class
 class JstHandlebars < Tilt::Template
   def self.default_mime_type
-    "application/javascript"
+    'application/javascript'
   end
 
   def self.default_namespace
@@ -16,7 +20,7 @@ class JstHandlebars < Tilt::Template
 
   attr_reader :namespace
 
-  def evaluate(scope, locals, &block)
+  def evaluate(scope, _locals, _block)
     <<-JST
       (function() { #{namespace} || (#{namespace} = {}); #{namespace}['#{scope.logical_path}'] = Handlebars.compile(#{data.to_json});
       }).call(this);
@@ -24,8 +28,8 @@ class JstHandlebars < Tilt::Template
   end
 
   protected
-  
+
   def indent(string)
-    string.gsub(/$(.)/m, "\\1  ").strip
+    string.gsub(/$(.)/m, '\\1  ').strip
   end
 end

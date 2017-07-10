@@ -45,12 +45,7 @@ Selectra.modules.users_filters.View = function(sb, model, controller) {
     }
 
     var params = {
-      nombre: $('#inputNombre').val(),
-      numero: $('#inputNumero').val(),
-      visibles_comedor: $('#selectVisiblesComedor').val(),
-      aportacion: $('#selectAportacion').val(),
-      familias: $('#selectFamilias').val()
-      // visibles: $('#selectVisiblesPSP').val()
+      nombre: $('#inputNombre').val()
     };
 
     controller.getUsers(params);
