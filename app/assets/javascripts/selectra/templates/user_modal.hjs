@@ -6,11 +6,29 @@
       <h4 class="modal-/title"><strong>CREAR NUEVO USUARIO</strong></h4>
     </div>
     <div class="modal-body">
-      <form class= "form-horizontal" role="form" id="familiasForm">
+      <form class= "form-horizontal" role="form" id="userForm">
         <div class="form-group">
           <label for="inputName" class="col-lg-3 col-md-3 control-label"><span class="red">*</span> Nombre:</label>
           <div class="field col-lg-7 col-md-7">
             <input id="inputName" name="inputName" class="form-control" value="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputSurname" class="col-lg-3 col-md-3 control-label">Apellido:</label>
+          <div class="field col-lg-7 col-md-7">
+            <input id="inputSurname" name="inputSurname" class="form-control" value="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="col-lg-3 col-md-3 control-label"><span class="red">*</span> Email:</label>
+          <div class="field col-lg-7 col-md-7">
+            <input id="inputEmail" name="inputEmail" class="form-control" value="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPass" class="col-lg-3 col-md-3 control-label"><span class="red">*</span> Contraseña:</label>
+          <div class="field col-lg-7 col-md-7">
+            <input id="inputPass" type="password" name="inputPass" class="form-control" value="">
           </div>
         </div>
       </form>

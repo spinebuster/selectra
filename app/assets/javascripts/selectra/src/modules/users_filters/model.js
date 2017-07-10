@@ -15,7 +15,7 @@ Selectra.modules.users_filters.Model = function(sb) {
         $('#collapseUsersFilters').collapse('hide');
 
         this.sb.emit('users_filters.users_results', {
-          users: data.records
+          users: data.data.records
         });
       }, this)
     });

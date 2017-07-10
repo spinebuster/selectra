@@ -5,6 +5,10 @@ NS('Selectra.modules.user_modal');
 Selectra.modules.user_modal.View = function(sb, model, controller) {
   var initialize = function() {
     model.on('data_loaded', render, this);
+    model.on('create_user_ended', function(user) {
+      controller.emitUserCreated(user);
+      this.closeModal();
+    }, this);
   };
 
   var render = function() {
@@ -35,6 +39,67 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
     controller.close();
   };
 
+  var getHashData = function(view) {
+    var newUser = {
+      name: $('#userForm #inputName').val(),
+      surname: $('#userForm #inputSurname').val(),
+      email: $('#userForm #inputEmail').val(),
+      password: $('#userForm #inputPass').val(),
+    };
+
+    return newUser;
+  };
+
+  var onClickCreateUser = function(e) {
+    e.preventDefault();
+
+    var newUser = getHashData();
+    if (this.initValidate()) {
+      controller.createUser(newUser);
+    }
+  };
+
+  var initValidate = function() {
+    jQuery.validator.addMethod('isEmail', function(email) {
+      var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+      return emailReg.test(email);
+    }, '');
+
+    $('#userForm').validate({
+      rules: {
+        inputName: {
+          required: true
+        },
+        inputEmail: {
+          isEmail: true,
+          required: true
+        },
+        inputPass: {
+          required: true
+        }
+      },
+      messages: {
+        inputName: {
+          required: ''
+        },
+        inputEmail: {
+          isEmail: '',
+          required: ''
+        },
+        inputPass: {
+          required: ''
+        }
+      },
+      highlight: function(element) {
+        $(element).closest('.field').addClass('has-error');
+      },
+      unhighlight: function(element) {
+        $(element).closest('.field').removeClass('has-error');
+      },
+    });
+    return $('#userForm').valid();
+  };
+
   return sb.backbone.View.extend({
     _this: this,
     template: function() {
@@ -43,11 +108,14 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
     el: sb.options.el,
     events: {
       'click .modal-header button.close': 'closeModal',
-      'hidden.bs.modal': 'closeModal'
+      'hidden.bs.modal': 'closeModal',
+      'click #btnCreateUser': 'onClickCreateUser'
     },
     initialize: initialize,
     render: render,
     close: close,
-    closeModal: closeModal
+    closeModal: closeModal,
+    onClickCreateUser: onClickCreateUser,
+    initValidate: initValidate
   });
 };

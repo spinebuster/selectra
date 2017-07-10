@@ -6,7 +6,7 @@ Selectra.modules.users_results.Model = function(sb) {
   this.sb = sb;
 
   var start = function(params) {
-    this.set('allUserss', params.users);
+    this.set('allUsers', params.users);
 
     this.trigger('users_results_loaded');
   };

@@ -13,9 +13,11 @@ class User < ActiveRecord::Base
     [true, false]
   end
 
+  # Callbaks
+  before_save :create_hashed_password, if: :password_changed?
+
   # Validations
   validates :name, presence: true
-  validates :surname, presence: true
   validates :email, presence: true, format: {
     with: EMAIL_FORMAT
   }, uniqueness: true
@@ -24,7 +26,7 @@ class User < ActiveRecord::Base
   # API Templates
   api_accessible :base do |template|
     %i[
-      id name surname email
+      id name surname email active
     ].each do |field|
       template.add field
     end
@@ -33,7 +35,23 @@ class User < ActiveRecord::Base
   # Scopes
   class << self
     def with_name(name)
-      where(name: name)
+      where(
+        'name LIKE :name', name: "%#{name}%"
+      )
     end
+
+    def with_email(email)
+      where(
+        'email LIKE :email', email: "%#{email}%"
+      )
+    end
+
+    def actives(active)
+      where(active: active.to_boolean)
+    end
+  end
+
+  def create_hashed_password
+    self.password = Digest::MD5.hexdigest(password)
   end
 end

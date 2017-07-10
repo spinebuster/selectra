@@ -9,7 +9,45 @@
 {{/if}}
 
 <div class="col-lg-12 col-md-12">
-  <div class="alert alert-info">
-    <strong>No existen usuarios con los parámetros de búsqueda especificados.</strong>
-  </div>
+  {{#if allUsers}}
+    <table class="table table-hover tablesorter" id="tableCodigos">
+      <thead>
+        <tr>
+          <th>NOMBRE</th>
+          <th>EMAIL</th>
+          <th>ACTIVO</th>
+          <th width="150px">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each allUsers}}
+          <tr id="user_{{id}}">
+            <td>{{name}} {{surname}}</td>
+            <td>{{email}}</td>
+            <td>
+              {{#if active}}
+                <span class="glyphicon glyphicon-ok"></span>
+              {{else}}
+                <span class="glyphicon glyphicon-remove"></span>
+              {{/if}}
+            </td>
+            <td id="userOptions">
+              <div class="pull-right">
+                <button type="button" class="btn btn-primary btnUserEdit" data-userid="{{id}}" rel="tooltip" title="Editar usuario">
+                  <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button type="button" class="btn btn-primary btnUserDelete" data-userid="{{id}}" rel="tooltip" title="Borrar usuario">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="alert alert-info">
+      <strong>No existen usuarios con los parámetros de búsqueda especificados.</strong>
+    </div>
+  {{/if}}
 </div>

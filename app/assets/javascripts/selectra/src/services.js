@@ -1,8 +1,6 @@
 NS('Selectra');
 
 Selectra.services = function() {
-  var organization = window.LCIberica.organization;
-
   var decoder = function(data, status, xhr, success, error) {
     if (status === 'success') {
       success(data, status);
@@ -16,6 +14,12 @@ Selectra.services = function() {
     amplify.request.define('service_users', 'ajax', {
       url: '/users.json',
       type: 'GET',
+      decoder: decoder
+    });
+
+    amplify.request.define('service_newUser', 'ajax', {
+      url: '/users.json',
+      type: 'POST',
       decoder: decoder
     });
   };
