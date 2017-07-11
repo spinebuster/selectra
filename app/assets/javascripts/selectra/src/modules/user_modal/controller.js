@@ -12,6 +12,14 @@ Selectra.modules.user_modal.Controller = function(sb) {
       this.sb.emit('user_modal.user_created', user.data);
     };
 
+    var editUser = function(userId, user) {
+      this.model.editUser(userId, user);
+    };
+
+    var emitUserUpdated = function(user) {
+      this.sb.emit('user_modal.user_updated', user.data);
+    };
+
     var initialize = function() {
       // Cargar las colecciones
       this.model.start(this.sb.options);
@@ -34,7 +42,9 @@ Selectra.modules.user_modal.Controller = function(sb) {
       destroy: destroy,
       close: close,
       createUser: createUser,
-      emitUserCreated: emitUserCreated
+      emitUserCreated: emitUserCreated,
+      editUser: editUser,
+      emitUserUpdated: emitUserUpdated
     };
 
     return controller;

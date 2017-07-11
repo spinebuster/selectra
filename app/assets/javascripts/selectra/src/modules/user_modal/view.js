@@ -9,6 +9,10 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
       controller.emitUserCreated(user);
       this.closeModal();
     }, this);
+    model.on('edit_user_ended', function(user) {
+      controller.emitUserUpdated(user);
+      this.closeModal();
+    }, this);
   };
 
   var render = function() {
@@ -45,6 +49,7 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
       surname: $('#userForm #inputSurname').val(),
       email: $('#userForm #inputEmail').val(),
       password: $('#userForm #inputPass').val(),
+      active: $('#inputActive').prop('checked')
     };
 
     return newUser;
@@ -53,9 +58,19 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
   var onClickCreateUser = function(e) {
     e.preventDefault();
 
-    var newUser = getHashData();
+    var user = getHashData();
     if (this.initValidate()) {
-      controller.createUser(newUser);
+      controller.createUser(user);
+    }
+  };
+
+  var onClickEditUser = function(e) {
+    e.preventDefault();
+
+    if (this.initValidate()) {
+      var user = getHashData();
+      var userId = $(e.currentTarget).data('userid');
+      controller.editUser(userId, user);
     }
   };
 
@@ -109,13 +124,15 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
     events: {
       'click .modal-header button.close': 'closeModal',
       'hidden.bs.modal': 'closeModal',
-      'click #btnCreateUser': 'onClickCreateUser'
+      'click #btnCreateUser': 'onClickCreateUser',
+      'click #btnEditUser': 'onClickEditUser'
     },
     initialize: initialize,
     render: render,
     close: close,
     closeModal: closeModal,
     onClickCreateUser: onClickCreateUser,
+    onClickEditUser: onClickEditUser,
     initValidate: initValidate
   });
 };

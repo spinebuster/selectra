@@ -25,7 +25,7 @@ Selectra.modules.users_results.View = function(sb, model, controller) {
 
     $('.user-modal-loading').show();
     var userId = $(e.currentTarget).data('userid');
-    controller.editarProveedor(userId);
+    controller.editUser(userId);
   };
 
   return sb.backbone.View.extend({

@@ -8,10 +8,14 @@ Selectra.modules.users_results.Controller = function(sb) {
       this.model.includeUser(user);
     };
 
-    var editarProveedor = function(userId) {
+    var editUser = function(userId) {
       this.sb.emit('users.new_user', {
         userId: userId
       });
+    };
+
+    var updateUser = function(user) {
+      this.model.updateUser(user);
     };
 
     var initialize = function() {
@@ -21,10 +25,14 @@ Selectra.modules.users_results.Controller = function(sb) {
       this.sb.on('user_modal.user_created',
         this.sb.bind(includeUser, this)
       );
+      this.sb.on('user_modal.user_updated',
+        this.sb.bind(updateUser, this)
+      );
     };
 
     var destroy = function() {
       this.sb.off('user_modal.user_created');
+      this.sb.off('user_modal.user_updated');
     };
 
     var controller = {
@@ -33,7 +41,8 @@ Selectra.modules.users_results.Controller = function(sb) {
       initialize: initialize,
       destroy: destroy,
       includeUser: includeUser,
-      editarProveedor: editarProveedor
+      editUser: editUser,
+      updateUser: updateUser
     };
 
     return controller;

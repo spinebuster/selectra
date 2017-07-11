@@ -34,6 +34,24 @@
             </div>
           </div>
         {{/if}}
+        <div class="form-group">
+          <label for="inputActive" class="col-lg-3 col-md-3 control-label">Activo:</label>
+          <div class="field col-lg-3 col-md-3">
+            <div class="checkbox">
+              <label>
+                {{#if user}}
+                  {{#if user.active}}
+                    <input id="inputActive" name="inputActive" type="checkbox" value="" checked>
+                  {{else}}
+                    <input id="inputActive" name="inputActive" type="checkbox" value="">
+                  {{/if}}
+                {{else}}
+                  <input id="inputActive" name="inputActive" type="checkbox" value="" checked>
+                {{/if}}
+              </label>
+            </div>
+          </div>
+        </div>
       </form>
       <div class="row">
         <div class="col-lg-12  col-md-12">
@@ -47,7 +65,11 @@
           <img src="/images/loading.gif"> Cargando...
         </div>
       </div>
-      <button id="btnCreateUser" type="button" class="btn btn-primary">Añadir</button>
+      {{#if user}}
+        <button id="btnEditUser" data-userid="{{user.id}}" type="button" class="btn btn-primary">Guardar cambios</button>
+      {{else}}
+        <button id="btnCreateUser" type="button" class="btn btn-primary">Añadir</button>
+      {{/if}}
     </div>
   </div>
 </div>

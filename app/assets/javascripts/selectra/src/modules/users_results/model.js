@@ -23,6 +23,25 @@ Selectra.modules.users_results.Model = function(sb) {
     );
   };
 
+  var updateUser = function(newUser) {
+    var users = this.get('allUsers');
+    var userUpdated = _.find(users, function(user) {
+      return user.id == newUser.id;
+    });
+    var index = _.indexOf(users, userUpdated);
+    users[index] = newUser;
+    this.set('allUsers', users);
+
+    var message =
+      'El usuario \'' + newUser.name + '\' ha sido actualizado.';
+    this.updateMessage(message, 'success');
+
+    this.trigger('users_results_loaded');
+    $('#user_' + newUser.id + ' td').effect(
+      'highlight', {color: '#c1e2b3'}, 2000
+    );
+  };
+
   var updateMessage = function(message, status) {
     this.set('message', message);
     this.set('newMessage', true);
@@ -54,6 +73,7 @@ Selectra.modules.users_results.Model = function(sb) {
     start: start,
     destroy: destroy,
     includeUser: includeUser,
+    updateUser: updateUser,
     updateMessage: updateMessage
   });
 };
