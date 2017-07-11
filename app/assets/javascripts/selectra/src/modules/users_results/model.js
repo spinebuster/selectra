@@ -42,6 +42,28 @@ Selectra.modules.users_results.Model = function(sb) {
     );
   };
 
+  var deleteUser = function(userId) {
+    sb.request({
+      resourceId: 'service_deleteUser',
+      data: {
+        id: userId
+      },
+      success: sb.bind(function(data) {
+        var users = this.get('allUsers');
+        var usersUpdated = _.reject(users, function(user) {
+          return user.id == userId;
+        });
+        this.set('allUsers', usersUpdated);
+
+        var message = 'El usuario \'' + data.data.name +
+          '\' ha sido eliminado.';
+        this.updateMessage(message, 'success');
+
+        this.trigger('users_results_loaded');
+      }, this)
+    });
+  };
+
   var updateMessage = function(message, status) {
     this.set('message', message);
     this.set('newMessage', true);
@@ -74,6 +96,7 @@ Selectra.modules.users_results.Model = function(sb) {
     destroy: destroy,
     includeUser: includeUser,
     updateUser: updateUser,
-    updateMessage: updateMessage
+    updateMessage: updateMessage,
+    deleteUser: deleteUser
   });
 };

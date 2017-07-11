@@ -13,6 +13,9 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
       controller.emitUserUpdated(user);
       this.closeModal();
     }, this);
+    sb.on('user_modal.user_deleted', function() {
+      this.closeModal();
+    }, this);
   };
 
   var render = function() {
@@ -40,6 +43,8 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
     }
 
     $(this.el).modal('hide');
+    $('.sweet-overlay').hide();
+    $('.sweet-alert').hide();
     controller.close();
   };
 
@@ -49,7 +54,7 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
       surname: $('#userForm #inputSurname').val(),
       email: $('#userForm #inputEmail').val(),
       password: $('#userForm #inputPass').val(),
-      active: $('#inputActive').prop('checked')
+      active: $('#userForm #inputActive').prop('checked')
     };
 
     return newUser;
@@ -72,6 +77,34 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
       var userId = $(e.currentTarget).data('userid');
       controller.editUser(userId, user);
     }
+  };
+
+  var onClickDeleteUser = function(e) {
+    e.preventDefault();
+
+    var userId = $(e.currentTarget).data('userid');
+    swal({
+      title: 'Confirmar operación',
+      text: 'Aceptando la operación se eliminará el usuario',
+      type: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar',
+      confirmButtonClass: 'btn-primary',
+      closeOnCancel: false,
+      closeOnConfirm: true
+    }, function(isConfirm) {
+      if (isConfirm) {
+        controller.deleteUser(userId);
+      } else {
+        swal({
+          title: 'Operación cancelada',
+          type: 'error',
+          timer: 1000,
+          showConfirmButton: false
+        });
+      }
+    });
   };
 
   var initValidate = function() {
@@ -125,7 +158,8 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
       'click .modal-header button.close': 'closeModal',
       'hidden.bs.modal': 'closeModal',
       'click #btnCreateUser': 'onClickCreateUser',
-      'click #btnEditUser': 'onClickEditUser'
+      'click #btnEditUser': 'onClickEditUser',
+      'click #btnDeleteUser': 'onClickDeleteUser'
     },
     initialize: initialize,
     render: render,
@@ -133,6 +167,7 @@ Selectra.modules.user_modal.View = function(sb, model, controller) {
     closeModal: closeModal,
     onClickCreateUser: onClickCreateUser,
     onClickEditUser: onClickEditUser,
+    onClickDeleteUser: onClickDeleteUser,
     initValidate: initValidate
   });
 };

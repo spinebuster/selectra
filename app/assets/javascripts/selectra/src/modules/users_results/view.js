@@ -28,6 +28,34 @@ Selectra.modules.users_results.View = function(sb, model, controller) {
     controller.editUser(userId);
   };
 
+  var onClickDeleteUser = function(e) {
+    e.preventDefault();
+
+    var userId = $(e.currentTarget).data('userid');
+    swal({
+      title: 'Confirmar operación',
+      text: 'Aceptando la operación se eliminará el usuario',
+      type: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar',
+      confirmButtonClass: 'btn-primary',
+      closeOnCancel: false,
+      closeOnConfirm: true
+    }, function(isConfirm) {
+      if (isConfirm) {
+        controller.deleteUser(userId);
+      } else {
+        swal({
+          title: 'Operación cancelada',
+          type: 'error',
+          timer: 1000,
+          showConfirmButton: false
+        });
+      }
+    });
+  };
+
   return sb.backbone.View.extend({
     _this: this,
     template: function() {
@@ -35,11 +63,13 @@ Selectra.modules.users_results.View = function(sb, model, controller) {
     },
     el: sb.options.el,
     events: {
-      'click .btnEditUser': 'onClickEditUser',
+      'click button.btnEditUser': 'onClickEditUser',
+      'click button.btnDeleteUser': 'onClickDeleteUser'
     },
     initialize: initialize,
     render: render,
     close: close,
-    onClickEditUser: onClickEditUser
+    onClickEditUser: onClickEditUser,
+    onClickDeleteUser: onClickDeleteUser
   });
 };

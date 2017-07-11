@@ -67,6 +67,7 @@
       </div>
       {{#if user}}
         <button id="btnEditUser" data-userid="{{user.id}}" type="button" class="btn btn-primary">Guardar cambios</button>
+        <button id="btnDeleteUser" data-userid="{{user.id}}" type="button" class="btn btn-primary">Borrar</button>
       {{else}}
         <button id="btnCreateUser" type="button" class="btn btn-primary">Añadir</button>
       {{/if}}

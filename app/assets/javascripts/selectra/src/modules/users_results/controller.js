@@ -18,6 +18,10 @@ Selectra.modules.users_results.Controller = function(sb) {
       this.model.updateUser(user);
     };
 
+    var deleteUser = function(userId) {
+      this.model.deleteUser(userId);
+    };
+
     var initialize = function() {
       // Cargar las colecciones
       this.model.start(this.sb.options);
@@ -28,11 +32,15 @@ Selectra.modules.users_results.Controller = function(sb) {
       this.sb.on('user_modal.user_updated',
         this.sb.bind(updateUser, this)
       );
+      this.sb.on('user_modal.user_deleted',
+        this.sb.bind(deleteUser, this)
+      );
     };
 
     var destroy = function() {
       this.sb.off('user_modal.user_created');
       this.sb.off('user_modal.user_updated');
+      this.sb.off('user_modal.user_deleted');
     };
 
     var controller = {
@@ -42,7 +50,8 @@ Selectra.modules.users_results.Controller = function(sb) {
       destroy: destroy,
       includeUser: includeUser,
       editUser: editUser,
-      updateUser: updateUser
+      updateUser: updateUser,
+      deleteUser: deleteUser
     };
 
     return controller;

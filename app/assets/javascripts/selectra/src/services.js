@@ -34,6 +34,12 @@ Selectra.services = function() {
       type: 'PUT',
       decoder: decoder
     });
+
+    amplify.request.define('service_deleteUser', 'ajax', {
+      url: '/users/{id}.json',
+      type: 'DELETE',
+      decoder: decoder
+    });
   };
 
   return {
