@@ -9,7 +9,7 @@ Selectra.modules.user_modal.Controller = function(sb) {
     };
 
     var emitUserCreated = function(user) {
-      this.sb.emit('user_modal.user_created', user);
+      this.sb.emit('user_modal.user_created', user.data);
     };
 
     var initialize = function() {

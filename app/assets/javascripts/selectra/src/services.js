@@ -22,6 +22,12 @@ Selectra.services = function() {
       type: 'POST',
       decoder: decoder
     });
+
+    amplify.request.define('service_user', 'ajax', {
+      url: '/users/{id}.json',
+      type: 'GET',
+      decoder: decoder
+    });
   };
 
   return {

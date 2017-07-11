@@ -25,8 +25,32 @@ Selectra.modules.user_modal.Model = function(sb) {
     });
   };
 
+  var getUser = function(userId, next) {
+    sb.request({
+      resourceId: 'service_user',
+      data: {
+        id: userId
+      },
+      success: sb.bind(function(data) {
+        this.set('user', data.data);
+        next(null);
+      }, this)
+    });
+  };
+
   var start = function(params) {
-    this.trigger('data_loaded');
+    var self = this;
+    if (_.isObject(params.userId)) {
+      self.trigger('data_loaded');
+    } else {
+      scaleApp.util.runWaterfall(
+        [
+          sb.bind(getUser, this, params.userId)
+        ], function(err, result) {
+          self.trigger('data_loaded');
+        }
+      );
+    }
   };
 
   var destroy = function() {

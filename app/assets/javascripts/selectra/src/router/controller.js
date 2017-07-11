@@ -132,7 +132,7 @@ Selectra.router.controller = function() {
       core.start('UserModal', {
         options: {
           el: '#userModal',
-          user: data.user || {}
+          userId: data.userId || {}
         }
       });
     };

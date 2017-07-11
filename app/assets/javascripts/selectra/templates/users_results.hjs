@@ -33,10 +33,10 @@
             </td>
             <td id="userOptions">
               <div class="pull-right">
-                <button type="button" class="btn btn-primary btnUserEdit" data-userid="{{id}}" rel="tooltip" title="Editar usuario">
+                <button type="button" class="btn btn-primary btnEditUser" data-userid="{{id}}" rel="tooltip" title="Editar usuario">
                   <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                <button type="button" class="btn btn-primary btnUserDelete" data-userid="{{id}}" rel="tooltip" title="Borrar usuario">
+                <button type="button" class="btn btn-primary btnDeleteUser" data-userid="{{id}}" rel="tooltip" title="Borrar usuario">
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </div>

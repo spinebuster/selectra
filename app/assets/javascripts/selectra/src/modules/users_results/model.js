@@ -5,6 +5,30 @@ NS('Selectra.modules.users_results');
 Selectra.modules.users_results.Model = function(sb) {
   this.sb = sb;
 
+  var includeUser = function(newUser) {
+    var users = this.get('allUsers');
+    users.push(newUser);
+    users = _.sortBy(users, function(user) {
+      return user.name.toLowerCase();
+    });
+    this.set('allUsers', users);
+
+    var message =
+      'El usuario \'' + newUser.name + '\' ha sido creado.';
+    this.updateMessage(message, 'success');
+
+    this.trigger('users_results_loaded');
+    $('#user_' + newUser.id + ' td').effect(
+      'highlight', {color: '#c1e2b3'}, 2000
+    );
+  };
+
+  var updateMessage = function(message, status) {
+    this.set('message', message);
+    this.set('newMessage', true);
+    this.set('status', status);
+  };
+
   var start = function(params) {
     this.set('allUsers', params.users);
 
@@ -20,11 +44,16 @@ Selectra.modules.users_results.Model = function(sb) {
 
     // Valores de los filtros de búsqueda
     defaults: {
-      allUsers: null
+      allUsers: null,
+      message: null,
+      newMessage: false,
+      status: null
     },
 
     // Inicializa el modelo
     start: start,
-    destroy: destroy
+    destroy: destroy,
+    includeUser: includeUser,
+    updateMessage: updateMessage
   });
 };

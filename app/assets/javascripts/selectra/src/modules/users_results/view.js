@@ -20,6 +20,14 @@ Selectra.modules.users_results.View = function(sb, model, controller) {
     this.undelegateEvents();
   };
 
+  var onClickEditUser = function(e) {
+    e.preventDefault();
+
+    $('.user-modal-loading').show();
+    var userId = $(e.currentTarget).data('userid');
+    controller.editarProveedor(userId);
+  };
+
   return sb.backbone.View.extend({
     _this: this,
     template: function() {
@@ -27,9 +35,11 @@ Selectra.modules.users_results.View = function(sb, model, controller) {
     },
     el: sb.options.el,
     events: {
+      'click .btnEditUser': 'onClickEditUser',
     },
     initialize: initialize,
     render: render,
-    close: close
+    close: close,
+    onClickEditUser: onClickEditUser
   });
 };
