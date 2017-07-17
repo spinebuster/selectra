@@ -67,13 +67,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  private
+
   def create_hashed_password
     self.password = Digest::MD5.hexdigest(password)
   end
 
   def validate_deletion
     return if can_delete?
-    errors.add(:can_delete, 'El usuario no puede ser borrado')
+    errors.add(:can_delete, "El usuario '#{name}' no puede ser borrado")
 
     # this will prevent the object from getting destroyed
     false

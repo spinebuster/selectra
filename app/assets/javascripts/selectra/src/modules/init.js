@@ -14,6 +14,14 @@ Selectra.modules.init = function() {
     core.register('UsersFilters', Selectra.modules.users_filters.Module());
     core.register('UsersResults', Selectra.modules.users_results.Module());
     core.register('UserModal', Selectra.modules.user_modal.Module());
+    core.register('Locations', Selectra.modules.locations.Module());
+    core.register(
+      'LocationsFilters', Selectra.modules.locations_filters.Module()
+    );
+    core.register(
+      'LocationsResults', Selectra.modules.locations_results.Module()
+    );
+    core.register('LocationModal', Selectra.modules.location_modal.Module());
   };
 
   return {

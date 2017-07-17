@@ -3,6 +3,7 @@
 
 # This is the main ApplicationController class
 class ApplicationController < ActionController::Base
+  include Concerns::ActsAsExceptionable
   include Concerns::ActsAsJsoner
 
   # Prevent CSRF attacks by raising an exception.

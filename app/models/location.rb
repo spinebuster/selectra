@@ -8,6 +8,7 @@ class Location < ActiveRecord::Base
 
   # Validations
   validates :name, :open_time, :close_time, presence: true
+  validate :valid_dates?
 
   # API Templates
   api_accessible :base do |template|
@@ -16,5 +17,21 @@ class Location < ActiveRecord::Base
     ].each do |field|
       template.add field
     end
+  end
+
+  # Scopes
+  class << self
+    def with_name(name)
+      where(
+        'name LIKE :name', name: "%#{name}%"
+      )
+    end
+  end
+
+  private
+
+  def valid_dates?
+    return if open_time <= close_time
+    errors.add(:times, 'Las fechas de apertura y cierre no son correctas')
   end
 end

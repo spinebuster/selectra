@@ -62,3 +62,7 @@
 //= require_tree ./src/modules/users_filters
 //= require_tree ./src/modules/users_results
 //= require_tree ./src/modules/user_modal
+//= require_tree ./src/modules/locations
+//= require_tree ./src/modules/locations_filters
+//= require_tree ./src/modules/locations_results
+//= require_tree ./src/modules/location_modal

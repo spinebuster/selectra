@@ -1,0 +1,23 @@
+<!-- -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <strong>LOCALIZACIONES</strong>
+  </div>
+</div>
+
+<div class="col-lg-12 col-md-12">
+  <div id="locations_filters"></div>
+</div>
+
+<div class="col-lg-12 col-md-12">
+  <div id="locations_results"></div>
+</div>
+
+<div class="col-lg-12 col-md-12">
+  <button type="button" class="btn btn-primary" id="btnNewLocation">Nuevo localización</button>
+  <div class="btn" style="cursor:default;">
+    <div style="display:none;" class="location-modal-loading col-lg-3 col-md-3">
+      <img src="/images/loading.gif"> Cargando...
+    </div>
+  </div>
+</div>

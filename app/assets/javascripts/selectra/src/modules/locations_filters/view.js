@@ -1,10 +1,10 @@
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 
-NS('Selectra.modules.users_filters');
+NS('Selectra.modules.locations_filters');
 
-Selectra.modules.users_filters.View = function(sb, model, controller) {
+Selectra.modules.locations_filters.View = function(sb, model, controller) {
   var initialize = function() {
-    model.on('users_filters_loaded', render, this);
+    model.on('locations_filters_loaded', render, this);
   };
 
   var render = function() {
@@ -31,11 +31,11 @@ Selectra.modules.users_filters.View = function(sb, model, controller) {
     }
   };
 
-  var onClickSearchUsers = function(e) {
+  var onClickSearchLocations = function(e) {
     e.preventDefault();
 
-    $('.users-mostrando').show();
-    var icono = $('.accordion-toggle.users-filters').find('span');
+    $('.locations-mostrando').show();
+    var icono = $('.accordion-toggle.locations-filters').find('span');
     if (icono.hasClass('glyphicon-chevron-down')) {
       icono.removeClass('glyphicon-chevron-down');
       icono.addClass('glyphicon-chevron-up');
@@ -45,28 +45,26 @@ Selectra.modules.users_filters.View = function(sb, model, controller) {
     }
 
     var params = {
-      name: $('#inputName').val(),
-      email: $('#inputEmail').val(),
-      active: $('#selectActives').val()
+      name: $('#inputName').val()
     };
 
-    controller.getUsers(params);
+    controller.getLocations(params);
   };
 
   return sb.backbone.View.extend({
     _this: this,
     template: function() {
-      return 'selectra/templates/users_filters';
+      return 'selectra/templates/locations_filters';
     },
     el: sb.options.el,
     events: {
-      'click a.accordion-toggle.users-filters': 'onClickToogleAcordeon',
-      'click button#btnSearchUsers': 'onClickSearchUsers'
+      'click a.accordion-toggle.locations-filters': 'onClickToogleAcordeon',
+      'click button#btnSearchLocations': 'onClickSearchLocations'
     },
     initialize: initialize,
     render: render,
     close: close,
     onClickToogleAcordeon: onClickToogleAcordeon,
-    onClickSearchUsers: onClickSearchUsers
+    onClickSearchLocations: onClickSearchLocations
   });
 };

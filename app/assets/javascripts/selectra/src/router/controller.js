@@ -73,7 +73,10 @@ Selectra.router.controller = function() {
     var stopSidebarModules = function() {
       core.stop('Users');
       core.stop('UsersFilters');
-      core.stop('Usersresults');
+      core.stop('UsersResults');
+      core.stop('Locations');
+      core.stop('LocationsFilters');
+      core.stop('LocationsResults');
     };
 
     var changeModuloSidebar = function(data) {
@@ -102,7 +105,7 @@ Selectra.router.controller = function() {
 
     var usersFilters = function(data) {
       core.stop('UsersFilters');
-      // core.stop('UsersResults');
+      core.stop('UsersResults');
 
       core.start('UsersFilters', {
         options: {
@@ -143,6 +146,53 @@ Selectra.router.controller = function() {
 
     var locations = function() {
       startBaseModules();
+
+      core.start('Locations', {
+        options: {
+          el: '#central'
+        }
+      });
+    };
+
+    var locationsFilters = function(data) {
+      core.stop('LocationsFilters');
+      core.stop('LocationsResults');
+
+      core.start('LocationsFilters', {
+        options: {
+          el: '#locations_filters'
+        }
+      });
+
+      core.start('LocationsResults', {
+        options: {
+          el: '#locations_results', locations: []
+        }
+      });
+    };
+
+    var locationsResults = function(data) {
+      core.stop('LocationsResults');
+
+      core.start('LocationsResults', {
+        options: {
+          el: '#locations_results',
+          locations: data.locations
+        }
+      });
+    };
+
+    var startLocationModal = function(data) {
+      core.start('LocationModal', {
+        options: {
+          el: '#locationModal',
+          locationId: data.locationId || {}
+        }
+      });
+    };
+
+    var stopLocationModal = function() {
+      core.stop('LocationModal');
     };
 
     var startModalSpinner = function(data) {
@@ -173,6 +223,11 @@ Selectra.router.controller = function() {
     core.on('users_filters.users_results', usersResults);
     core.on('users.new_user', startUserModal);
     core.on('user_modal.close', stopUserModal);
+    // Locations search filters
+    core.on('locations.locations_filters', locationsFilters);
+    core.on('locations_filters.locations_results', locationsResults);
+    core.on('locations.new_location', startLocationModal);
+    core.on('location_modal.close', stopLocationModal);
 
     // Eventos relacionados con arracar y parar el spinner
 

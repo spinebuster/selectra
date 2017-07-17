@@ -115,3 +115,18 @@ body#selectra {
 .panel-title > a.users-filters {
   font-size: 14px;
 }
+
+.panel-title > a.locations-filters {
+  font-size: 14px;
+}
+
+/* MODALS
+------------------------- */
+
+.modal-dialog {
+  width: 800px;
+}
+
+.red {
+  color: #B94A48;
+}

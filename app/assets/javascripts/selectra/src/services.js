@@ -40,6 +40,36 @@ Selectra.services = function() {
       type: 'DELETE',
       decoder: decoder
     });
+
+    amplify.request.define('service_locations', 'ajax', {
+      url: '/locations.json',
+      type: 'GET',
+      decoder: decoder
+    });
+
+    amplify.request.define('service_newLocation', 'ajax', {
+      url: '/locations.json',
+      type: 'POST',
+      decoder: decoder
+    });
+
+    amplify.request.define('service_location', 'ajax', {
+      url: '/locations/{id}.json',
+      type: 'GET',
+      decoder: decoder
+    });
+
+    amplify.request.define('service_editLocation', 'ajax', {
+      url: '/locations/{id}.json',
+      type: 'PUT',
+      decoder: decoder
+    });
+
+    amplify.request.define('service_deleteLocation', 'ajax', {
+      url: '/locations/{id}.json',
+      type: 'DELETE',
+      decoder: decoder
+    });
   };
 
   return {

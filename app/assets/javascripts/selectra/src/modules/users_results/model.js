@@ -61,7 +61,7 @@ Selectra.modules.users_results.Model = function(sb) {
             '\' ha sido eliminado.';
           this.updateMessage(message, 'success');
         } else {
-          this.updateMessage(data.data.errors.can_delete, 'danger');
+          this.updateMessage(_.first(data.data.errors.can_delete), 'danger');
         }
 
         this.trigger('users_results_loaded');
