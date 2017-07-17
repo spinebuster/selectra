@@ -15,6 +15,7 @@ User.blueprint do
   email    { Faker::Internet.email }
   password { Faker::Lorem.characters(50) }
   active   { true }
+  delete   { false }
 end
 
 User.blueprint(:invalid) do

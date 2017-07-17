@@ -13,7 +13,8 @@ Selectra.modules.user_modal.Model = function(sb) {
     sb.request({
       resourceId: 'service_newUser',
       data: {
-        user: user
+        user: user,
+        tpl: 'with_errors'
       },
       success: sb.bind(function(data) {
         // Ocultamos spinner y habilitamos botón crear
@@ -47,7 +48,8 @@ Selectra.modules.user_modal.Model = function(sb) {
       resourceId: 'service_editUser',
       data: {
         id: userId,
-        user: user
+        user: user,
+        tpl: 'with_errors'
       },
       success: sb.bind(function(data) {
         // Ocultamos spinner y habilitamos botones editar y borrar

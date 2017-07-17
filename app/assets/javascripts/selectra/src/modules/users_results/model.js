@@ -46,18 +46,23 @@ Selectra.modules.users_results.Model = function(sb) {
     sb.request({
       resourceId: 'service_deleteUser',
       data: {
-        id: userId
+        id: userId,
+        tpl: 'with_errors'
       },
       success: sb.bind(function(data) {
-        var users = this.get('allUsers');
-        var usersUpdated = _.reject(users, function(user) {
-          return user.id == userId;
-        });
-        this.set('allUsers', usersUpdated);
+        if (_.isEmpty(data.data.errors)) {
+          var users = this.get('allUsers');
+          var usersUpdated = _.reject(users, function(user) {
+            return user.id == userId;
+          });
+          this.set('allUsers', usersUpdated);
 
-        var message = 'El usuario \'' + data.data.name +
-          '\' ha sido eliminado.';
-        this.updateMessage(message, 'success');
+          var message = 'El usuario \'' + data.data.name +
+            '\' ha sido eliminado.';
+          this.updateMessage(message, 'success');
+        } else {
+          this.updateMessage(data.data.errors.can_delete, 'danger');
+        }
 
         this.trigger('users_results_loaded');
       }, this)

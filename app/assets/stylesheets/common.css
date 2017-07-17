@@ -13,6 +13,12 @@ body#selectra {
   padding-top: 150px;
 }
 
+.alert#selectra {
+  border-top: medium none;
+  width: 400px;
+  margin: 10px auto;
+}
+
 .container {
   border-top: medium none;
   margin: 0 auto;
@@ -26,10 +32,6 @@ body#selectra {
   padding: 0;
   width: 400px;
 	height: 155px;
-}
-
-.container#alert-selectra {
-  width: 400px;
 }
 
 .loginForm {
@@ -84,15 +86,14 @@ body#selectra {
 .btn#selectra {
 	width: 130px;
 	height: 90px;
-  background: #fff url(/assets/btn.png) no-repeat center center;
+  background: #fff url('/images/btn.png') no-repeat center center;
   cursor: pointer;
 	margin-top: 55px;
 	border: none;
 }
 
 #logout {
-  margin-top: 3px;
-  margin-right: 28px;
+  margin-top: -1px;
   background-image: url('/images/on.png');
   background-repeat: no-repeat;
   background-position: center;

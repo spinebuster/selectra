@@ -7,6 +7,7 @@ Selectra.modules.users_filters.Model = function(sb) {
 
   var getUsers = function(params) {
     params.order = 'name';
+    params.tpl = 'list';
     sb.request({
       resourceId: 'service_users',
       data: params,

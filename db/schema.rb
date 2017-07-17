@@ -22,13 +22,14 @@ ActiveRecord::Schema.define(version: 20170707144433) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "name",                       null: false
     t.string   "surname"
-    t.string   "email",                     null: false
-    t.string   "password",                  null: false
+    t.string   "email",                      null: false
+    t.string   "password",                   null: false
     t.boolean  "active",     default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "can_delete", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

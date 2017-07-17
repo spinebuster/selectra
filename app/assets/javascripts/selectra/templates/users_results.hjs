@@ -36,9 +36,15 @@
                 <button type="button" class="btn btn-primary btnEditUser" data-userid="{{id}}" rel="tooltip" title="Editar usuario">
                   <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                <button type="button" class="btn btn-primary btnDeleteUser" data-userid="{{id}}" rel="tooltip" title="Borrar usuario">
-                  <span class="glyphicon glyphicon-trash"></span>
-                </button>
+                {{#if can_delete}}
+                  <button type="button" class="btn btn-primary btnDeleteUser" data-userid="{{id}}" rel="tooltip" title="Borrar usuario">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                {{else}}
+                  <button type="button" class="btn btn-primary btnDeleteUser" data-userid="{{id}}" rel="tooltip" title="Borrar usuario" disabled>
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                {{/if}}
               </div>
             </td>
           </tr>
